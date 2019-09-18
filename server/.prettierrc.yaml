@@ -1,0 +1,10 @@
+bracketSpacing: false
+proseWrap: always
+singleQuote: true
+trailingComma: all
+overrides:
+  - files:
+      - '*.ts'
+      - '*.tsx'
+    options:
+      printWidth: 120
