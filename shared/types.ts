@@ -5,6 +5,8 @@ export interface Dimensions {
   z: number;
   /** Height when looking from the front. */
   y: number;
+  /** The units of measurement used for the item. */
+  units: string;
 }
 
 export interface Rank {

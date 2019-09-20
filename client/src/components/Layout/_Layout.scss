@@ -1,0 +1,19 @@
+.Layout {
+  height: 100%;
+  background-color: $light-gray5;
+  overflow: auto;
+  padding: $pt-grid-size;
+
+  &__list {
+    display: grid;
+    gap: $pt-grid-size/2;
+    grid-template-columns: 1fr;
+  }
+
+  &__list,
+  &__item {
+    margin: auto;
+    max-width: $phone-upper;
+    width: 100%;
+  }
+}

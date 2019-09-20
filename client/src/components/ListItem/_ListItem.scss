@@ -1,0 +1,42 @@
+.ListItem {
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  padding: $pt-grid-size;
+  background: $white;
+  border: 1px solid $gray5;
+  border-radius: $pt-border-radius;
+
+  &__grid {
+    display: grid;
+    grid-template:
+      'img name' min-content
+      'img asin' min-content
+      / min-content auto;
+    gap: 0 $pt-grid-size;
+  }
+
+  &__img {
+    grid-area: img;
+    height: 48px;
+    width: 48px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__name {
+    grid-area: name;
+    text-align: left;
+  }
+
+  &__asin {
+    grid-area: asin;
+    text-align: left;
+    color: $gray1;
+    font-size: 12px;
+  }
+}
