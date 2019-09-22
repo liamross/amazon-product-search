@@ -41,13 +41,18 @@ app.use(cors());
 
 /* --- All items --- */
 
-/** Get all stored items. */
+/** Get slimmed-down all stored items. */
 app.get('/item', (_req, res, next) => {
   console.log('GET /item');
 
   try {
     // TODO: Get items from DB.
-    const returnVal = Array.from(mockItems.values());
+    const items = Array.from(mockItems.values());
+    const returnVal = items.map(item => ({
+      asin: item.asin,
+      imgUrl: item.imgUrl,
+      name: item.name,
+    }));
     console.log(returnVal);
     res.send(returnVal);
   } catch (error) {
@@ -104,7 +109,7 @@ app.delete('/item/:asin', (req, res, next) => {
 
   try {
     if (mockItems.has(asin)) {
-      // TODO: delete.
+      // TODO: Delete item in DB.
       res.status(204).send();
     } else {
       throw new Error('Item does not exist.');

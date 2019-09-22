@@ -1,8 +1,8 @@
 import React, {ButtonHTMLAttributes, FC} from 'react';
-import {AmazonItem} from '../../../../shared/types';
+import {AmazonListItem} from '../../api/items';
 
 interface ListItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  item: AmazonItem;
+  item: AmazonListItem;
 }
 
 const ListItem: FC<ListItemProps> = ({item, ...buttonProps}) => {

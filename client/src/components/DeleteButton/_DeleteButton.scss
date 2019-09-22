@@ -1,0 +1,15 @@
+.DeleteButton {
+  display: flex;
+  margin-top: $pt-grid-size;
+  justify-content: center;
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $pt-grid-size;
+  }
+
+  &__cancel {
+    margin-right: $pt-grid-size / 2;
+  }
+}

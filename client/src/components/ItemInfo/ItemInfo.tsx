@@ -1,12 +1,15 @@
 import React, {FC} from 'react';
 import {AmazonItem} from '../../../../shared/types';
 import {prettyDate} from '../../utils/dateUtils';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 interface ItemInfoProps {
   item: AmazonItem;
+  onDelete: () => void;
+  disabled?: boolean;
 }
 
-const ItemInfo: FC<ItemInfoProps> = ({item}) => {
+const ItemInfo: FC<ItemInfoProps> = ({item, onDelete, disabled}) => {
   const {x, z, y, units} = item.dimensions;
 
   const dimensionsString = `${x} ${units} x ${z} ${units} x ${y} ${units}`;
@@ -35,6 +38,7 @@ const ItemInfo: FC<ItemInfoProps> = ({item}) => {
         <div className="ItemInfo__label">{'Category:'}</div>
         <div className="ItemInfo__category">{item.category.map(category => `(${category})`)}</div>
       </div>
+      <DeleteButton isItem onConfirm={onDelete} disabled={disabled} />
     </div>
   );
 };

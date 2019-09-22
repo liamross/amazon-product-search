@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import {AmazonItem, Rank} from '../../shared/types';
+import {Omit} from '../../shared/typeUtils';
 
 const INFORMATION_TABLE_SELECTOR = 'div.pdTab';
 
@@ -30,10 +31,7 @@ export async function scrapeByAsin(asin: string): Promise<Omit<AmazonItem, 'stor
       const element = document.getElementById('wayfinding-breadcrumbs_feature_div') as HTMLDivElement;
       const ul = element.firstElementChild as HTMLUListElement;
       const allLIChildren: HTMLLIElement[] = Array.prototype.slice.call(ul.children);
-      const textLIChildren = allLIChildren.reduce(
-        (liArray, li, index) => (index % 2 == 0 ? [...liArray, li] : liArray),
-        [] as HTMLLIElement[],
-      );
+      const textLIChildren = allLIChildren.filter((_li, index) => index % 2 == 0);
       return textLIChildren.map(li => {
         const span = li.firstElementChild as HTMLSpanElement;
         const a = span.firstElementChild as HTMLAnchorElement;
