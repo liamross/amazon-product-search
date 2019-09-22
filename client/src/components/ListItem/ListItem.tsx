@@ -10,7 +10,7 @@ const ListItem: FC<ListItemProps> = ({item, ...buttonProps}) => {
     <button className="ListItem" {...buttonProps}>
       <div className="ListItem__grid">
         <div className="ListItem__img">
-          <img src={item.imgUrl} />
+          <img src={item.imgUrl} alt={item.name} />
         </div>
         <div className="ListItem__name">{item.name}</div>
         <div className="ListItem__asin">{item.asin}</div>

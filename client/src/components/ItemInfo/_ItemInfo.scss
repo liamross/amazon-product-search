@@ -11,20 +11,20 @@
       'img              img       ' min-content
       'name-label       name      ' min-content
       'asin-label       asin      ' min-content
-      'date-label       date      ' min-content
       'dimensions-label dimensions' min-content
       'rank-label       rank      ' min-content
       'category-label   category  ' min-content
+      'date-label       date      ' min-content
       / min-content auto;
 
     @media (min-width: $phone-upper) {
       grid-template:
         'img name-label       name      ' min-content
         'img asin-label       asin      ' min-content
-        'img date-label       date      ' min-content
         'img dimensions-label dimensions' min-content
         'img rank-label       rank      ' min-content
         'img category-label   category  ' min-content
+        'img date-label       date      ' min-content
         / min-content min-content auto;
     }
   }

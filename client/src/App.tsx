@@ -31,7 +31,8 @@ const App: FC = () => {
       setData(prev => {
         if (!prev) return [];
         const removeIndex = prev.findIndex(prevItem => prevItem.asin === asin);
-        return [...prev.slice(0, removeIndex), ...prev.slice(removeIndex + 1)];
+        const newVal = [...prev.slice(0, removeIndex), ...prev.slice(removeIndex + 1)];
+        return newVal;
       });
     },
     [setData],
@@ -74,7 +75,7 @@ const App: FC = () => {
   );
 
   if (loading) return <Loading />;
-  if (error || !items) return <Error onClick={() => fireFetch} text={'Retry'} />;
+  if (error || !items) return <Error onClick={() => fireFetch()} text={'Retry'} />;
 
   return (
     <ItemContext.Provider value={value}>

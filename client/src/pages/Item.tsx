@@ -18,24 +18,27 @@ const Item: FC<ItemProps> = ({asin, closePanel}) => {
 
   const {data: item, loading, error} = useData(() => getItemByAsin(asin));
 
-  useEffect(() => {
-    if (item) addItem(item);
-  }, [item]);
-
   const [deleting, setDeleting] = useState(false);
+  useEffect(() => setDeleting(false), []);
+
+  useEffect(() => {
+    if (item && !deleting && !loading && !error) {
+      addItem(item);
+    }
+  }, [item, deleting, loading, error, addItem]);
+
   const handleDelete = useCallback(async () => {
     setDeleting(true);
     try {
       await deleteItemByAsin(asin);
-      deleteItem(asin);
-      setDeleting(false);
       closePanel();
+      deleteItem(asin);
     } catch (error) {
       console.error(error);
       // TODO: Display error.
       setDeleting(false);
     }
-  }, [asin]);
+  }, [asin, closePanel, deleteItem]);
 
   if (loading) return <Loading />;
   if (error || !item) return <Error onClick={closePanel} />;

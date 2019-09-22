@@ -23,7 +23,7 @@ const Home: FC<HomeProps> = ({openPanel}) => {
         props: {asin: searchVal.toUpperCase()},
         title: 'New item',
       }),
-    [searchVal],
+    [searchVal, openPanel],
   );
 
   return (
