@@ -25,6 +25,7 @@ const Search: FC<SearchProps> = ({onChange, onSearch, value}) => {
   return (
     <InputGroup
       className="Search"
+      placeholder="Search for an item by ASIN number."
       type="search"
       leftIcon="search"
       onChange={handleOnChange}

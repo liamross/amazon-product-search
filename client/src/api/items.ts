@@ -1,7 +1,7 @@
 import {AmazonItem} from '../../../shared/types';
 import {Include} from '../../../shared/typeUtils';
 
-const SERVER = 'http://localhost:3001';
+const SERVER = process.env.REACT_APP_API_ROOT;
 
 export type AmazonListItem = Include<AmazonItem, 'asin' | 'imgUrl' | 'name'>;
 

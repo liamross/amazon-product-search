@@ -3,6 +3,7 @@ import {AmazonItem, Rank} from '../../shared/types';
 import {Omit} from '../../shared/typeUtils';
 
 const INFORMATION_TABLE_SELECTOR = 'div.pdTab';
+const SCRAPE_TIMEOUT = 6000;
 
 // https://github.com/GoogleChrome/puppeteer/issues/3051
 
@@ -14,7 +15,7 @@ export async function scrapeByAsin(asin: string): Promise<Omit<AmazonItem, 'stor
     await page.goto(`https://www.amazon.com/dp/${asin}`);
 
     // Wait for information table to load before parsing information.
-    await page.waitForSelector(INFORMATION_TABLE_SELECTOR);
+    await page.waitForSelector(INFORMATION_TABLE_SELECTOR, {timeout: SCRAPE_TIMEOUT});
 
     const name = await page.evaluate(() => {
       const element = document.getElementById('productTitle') as HTMLSpanElement;
@@ -45,9 +46,7 @@ export async function scrapeByAsin(asin: string): Promise<Omit<AmazonItem, 'stor
       const splitRanks = valueTD.innerText.split('\n');
       return splitRanks.map<Rank>(splitRank => {
         const cleanRank = splitRank.split(/\s\(/)[0];
-        console.log({cleanRank});
         const [rankString, category] = cleanRank.split(/\sin\s/);
-        console.log({rankString, category});
         return {rank: Number(rankString.substring(1)), category};
       });
     });
