@@ -5,7 +5,8 @@ search for an item, simply enter the ASIN number.
 
 ## To start
 
-Run `yarn start` or `npm run start` in both the `client` and `server`
+1. Run `yarn` or `npm i` in `client` and `server`.
+1. Run `yarn start` or `npm run start` in both the `client` and `server`
 directories.
 
 ## The stack
